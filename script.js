@@ -23,16 +23,46 @@ const users = [
     { name: 'Otavio Matheus Neves', username: 'otavionvs' },
 ]
 
-function createOrderedList(e) {
+
+function irParaPagina(e) {
+    location.href = "./userPage"
+}
+
+function createOrderedList() {
     const list = document.createElement('ol');
 
     users.forEach(function(e) {
+        //Buscando o git de cada estudante da lista
+
+        fetch(`https://api.github.com/users/${e.username}`)
+            .then(function(resultado) {
+                resultado.json().then(function(data) {
+                    console.log("Data: ", data);
+                });
+            }).catch(function(error) {
+                console.log("Error: ", error);
+            });
+        // Criando item da lista pra cada elemento
         const listItem = document.createElement('li');
-        listItem.innerText = e;
+        listItem.className = "list-items";
+
+        //Criando botão e adicionando rediricionamento para outra página
+        const button = document.createElement('button');
+        button.innerText = "Abra aqui";
+        button.className = "li-button";
+        button.addEventListener('click', function() {
+            location.href = "./userPage/user.html?" + e.username;
+        });
+
+        listItem.innerText = e.name + " ----> Usuário: " + e.username;
+        listItem.appendChild(button);
         list.appendChild(listItem);
     });
+
+
     body.appendChild(list);
 }
+
 
 
 createOrderedList();
