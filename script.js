@@ -24,24 +24,10 @@ const users = [
 ]
 
 
-function irParaPagina(e) {
-    location.href = "./userPage"
-}
-
 function createOrderedList() {
     const list = document.createElement('ol');
 
     users.forEach(function(e) {
-        //Buscando o git de cada estudante da lista
-
-        fetch(`https://api.github.com/users/${e.username}`)
-            .then(function(resultado) {
-                resultado.json().then(function(data) {
-                    console.log("Data: ", data);
-                });
-            }).catch(function(error) {
-                console.log("Error: ", error);
-            });
         // Criando item da lista pra cada elemento
         const listItem = document.createElement('li');
         listItem.className = "list-items";
@@ -54,15 +40,17 @@ function createOrderedList() {
             location.href = "./userPage/user.html?" + e.username;
         });
 
+        const hline = document.createElement('hr');
+
+
         listItem.innerText = e.name + " ----> Usuário: " + e.username;
         listItem.appendChild(button);
         list.appendChild(listItem);
+        list.appendChild(hline);
     });
 
 
     body.appendChild(list);
 }
-
-
 
 createOrderedList();
