@@ -34,7 +34,7 @@ function createOrderedList() {
 
         //Criando botão e adicionando rediricionamento para outra página
         const button = document.createElement('button');
-        button.innerText = "Abra aqui";
+        button.innerText = "Acessar";
         button.className = "li-button";
         button.addEventListener('click', function() {
             location.href = "./userPage/user.html?" + e.username;

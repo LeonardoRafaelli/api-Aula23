@@ -1,0 +1,21 @@
+.profile-div {
+    text-align: center;
+}
+
+.repos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.repos-div {
+    text-align: center;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+button {
+    margin-bottom: 15px;
+}
