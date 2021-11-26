@@ -217,11 +217,6 @@ function createOrderedList() {
 
 
     function filtrar() {
-        let input, filter, ol, li, i, txtValue;
-        input = document.querySelector('.procurar');
-        filter = input.value.toUpperCase();
-        ol = document.getElementById("lista");
-        li = ol.getElementsByTagName('li');
 
         // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < li.length; i++) {
@@ -231,11 +226,28 @@ function createOrderedList() {
                 li[i].style.display = "";
             } else {
                 li[i].style.display = "none";
+                console.log(i);
             }
         }
     }
 
-    procurar.addEventListener('keydown', filtrar());
+    let input, filter, ol, li, i, txtValue;
+    input = document.querySelector('.procurar');
+    filter = input.value.toUpperCase();
+    ol = document.getElementById("lista");
+    li = ol.getElementsByTagName('li');
+    procurar.addEventListener('keydown', function() {
+        for (i = 0; i < li.length; i++) {
+
+            txtValue = users[i].name;
+            if (txtValue.toUpperCase().indexOf(filter.value) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+                console.log(i);
+            }
+        }
+    });
 
 }
 
