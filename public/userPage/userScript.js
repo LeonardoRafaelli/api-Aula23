@@ -6,7 +6,7 @@ profileDiv.className = "profile-div";
 
 //Buscando o git de cada estudante da lista
 
-fetch(`https://fake-github2.herokuapp.com/api/search/${username}`)
+fetch(`https://fake-github.herokuapp.com/api/search/${username}`)
     .then(function(resultado) {
         resultado.json().then(function(data) {
 
@@ -30,7 +30,7 @@ reposDivContainer.className = 'repos-container'
 
 
 //Buscando repositórios
-fetch(`https://fake-github2.herokuapp.com/api/search/${username}/repos`)
+fetch(`https://fake-github.herokuapp.com/api/search/${username}/repos`)
     .then(function(resultado) {
         resultado.json().then(function(repos) {
 
