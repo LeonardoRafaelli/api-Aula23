@@ -216,35 +216,20 @@ function createOrderedList() {
     divPrincipal.appendChild(list);
 
 
-    function filtrar() {
-
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-
-            txtValue = users[i].name;
-            if (txtValue.toUpperCase().indexOf(filter.value) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-                console.log(i);
-            }
-        }
-    }
-
     let input, filter, ol, li, i, txtValue;
     input = document.querySelector('.procurar');
-    filter = input.value.toUpperCase();
+    filter = input.value;
     ol = document.getElementById("lista");
     li = ol.getElementsByTagName('li');
-    procurar.addEventListener('keydown', function() {
+    procurar.addEventListener('keyup', function() {
         for (i = 0; i < li.length; i++) {
-
-            txtValue = users[i].name;
-            if (txtValue.toUpperCase().indexOf(filter.value) > -1) {
+            txtValue = users[i].name.toUpperCase();
+            if (txtValue.indexOf(input.value.toUpperCase()) > -1) {
+                // console.log(i);
                 li[i].style.display = "";
             } else {
+                // console.log(i);
                 li[i].style.display = "none";
-                console.log(i);
             }
         }
     });
